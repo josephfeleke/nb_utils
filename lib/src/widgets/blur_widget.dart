@@ -27,26 +27,26 @@ class Blur extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: elevation,
-      color: Colors.transparent,
-      borderRadius: borderRadius,
-      child: ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.zero,
-        clipBehavior: clipBehavior,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: Container(
-            height: height,
-            width: width,
-            padding: padding,
-            color: color,
-            child: child,
-          ),
+ @override
+Widget build(BuildContext context) {
+  return Material(
+    elevation: elevation,
+    color: Colors.transparent,
+    borderRadius: borderRadius ?? BorderRadius.zero, // Providing a default value
+    child: ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.zero,
+      clipBehavior: clipBehavior,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+        child: Container(
+          height: height,
+          width: width,
+          padding: padding,
+          color: color,
+          child: child,
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
